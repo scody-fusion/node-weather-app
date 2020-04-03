@@ -1,6 +1,6 @@
 console.log('hello from client side js');
 
-const baseUrl = 'http://localhost:3000/weather?address=';
+const baseUrl = '/weather?address=';
 
 // const fetchWeatherResults = (location) => {
     // const requestUrl = `${baseUrl}${location}`;
