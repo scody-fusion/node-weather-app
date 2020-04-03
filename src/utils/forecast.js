@@ -1,6 +1,4 @@
 request = require('request')
-const chalk = require('chalk')
-
 
 const forecast = (latitude, longitude, callback) => {
 
@@ -20,11 +18,11 @@ const forecast = (latitude, longitude, callback) => {
             if (error) {
                 callback('Unable to connect to weather service')
             } else if (body.error) {
-                callback(chalk.red.inverse('Invalid location'));
+                callback('Invalid location');
             } else {
-                
+                console.log('body.daily.data:', body.daily.data);
                 const { temperature, precipProbability } = body.currently
-                callback(undefined, chalk.green.inverse(body.daily.data[0].summary + ' It is currently ' + temperature + ' degrees out. There is a ' + precipProbability + '% chance of rain.'));
+                callback(undefined, body.daily.data[0].summary + ' It is currently ' + temperature + ' degrees out. There is a ' + precipProbability + '% chance of rain. The expected high is ' + body.daily.data[0].temperatureHigh + ' degrees.');
             }
         }
     )
